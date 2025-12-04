@@ -1,72 +1,144 @@
-<footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Brand -->
-            <div>
-                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Portfolio</h3>
-                <p class="text-sm text-gray-600 dark:text-gray-400">
-                    Professional portfolio showcasing my work and experience.
-                </p>
+<!-- Newsletter Section -->
+<div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-20 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20">
+    <div class="w-full max-w-[1280px] flex flex-col justify-start items-start gap-12 lg:gap-20">
+        <div class="self-stretch inline-flex flex-col lg:flex-row justify-between items-start gap-8">
+            <!-- Left Content -->
+            <div class="flex-1 max-w-[560px] inline-flex flex-col justify-start items-start">
+                <div class="self-stretch justify-start text-white text-lg lg:text-xl font-semibold leading-7 lg:leading-8">Stay in the loop</div>
+                <div class="self-stretch justify-start text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">
+                    Get updates on new work and design insights
+                </div>
             </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li>
-                        <a href="{{ route('home') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('about') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('projects') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                            Projects
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('contact') }}" class="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                            Contact
-                        </a>
-                    </li>
-                </ul>
+            
+            <!-- Right Content - Newsletter Form -->
+            <div class="w-full lg:w-96 inline-flex flex-col justify-start items-start gap-3">
+            <div class="self-stretch inline-flex justify-start items-start gap-1">
+                    <div class="justify-start text-white/60 text-xs font-normal leading-4">
+                        Follow me on social media
+                    </div>
+                </div>
+                <div class="self-stretch inline-flex justify-start items-start gap-1">
+                    <div class="justify-start text-white/60 text-xs font-normal leading-4">
+                        & Unsubscribe anytime.
+                    </div>
+                </div>
             </div>
-
-            <!-- Social Links -->
-            <div>
-                <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-4">Connect</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                        <span class="sr-only">LinkedIn</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                        </svg>
+        </div>
+        
+        <!-- Divider -->
+        <div class="self-stretch h-0 outline outline-2 outline-offset-[-1px] outline-white/20"></div>
+        
+        <!-- Footer Links -->
+        <div class="self-stretch inline-flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-10">
+            <!-- Explore -->
+            <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
+                <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Explore</div>
+                <div class="self-stretch flex flex-col justify-start items-start">
+                    <a href="{{ route('projects') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Portfolio</div>
                     </a>
-                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                        <span class="sr-only">GitHub</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
-                        </svg>
+                    <a href="{{ route('projects') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Projects</div>
                     </a>
-                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                        <span class="sr-only">Twitter</span>
-                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
-                        </svg>
+                    <a href="{{ route('about') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">About</div>
+                    </a>
+                    <a href="{{ route('contact') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Contact</div>
+                    </a>
+                    <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Services</div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Resources -->
+            <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
+                <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Resources</div>
+                <div class="self-stretch flex flex-col justify-start items-start">
+                    @foreach(['Blog', 'Insights', 'Guides', 'Tools', 'Gallery'] as $item)
+                    <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            
+            <!-- Company -->
+            <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
+                <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Company</div>
+                <div class="self-stretch flex flex-col justify-start items-start">
+                    @foreach(['Our story', 'Team', 'Careers', 'Press', 'Partners'] as $item)
+                    <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            
+            <!-- Connect -->
+            <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
+                <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Connect</div>
+                <div class="self-stretch flex flex-col justify-start items-start">
+                    @foreach(['Get in touch', 'Email us', 'Call now', 'Visit us', 'Schedule call'] as $item)
+                    <a href="{{ route('contact') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            
+            <!-- Legal -->
+            <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
+                <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Legal</div>
+                <div class="self-stretch flex flex-col justify-start items-start">
+                    @foreach(['Privacy policy', 'Terms of service', 'Cookie policy', 'Disclaimer', 'Accessibility'] as $item)
+                    <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
+            
+            <!-- Follow -->
+            <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
+                <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Follow</div>
+                <div class="self-stretch flex flex-col justify-start items-start">
+                    <a href="https://www.linkedin.com/in/i-gusti-nyoman-pramajaya-3560b9285/" target="_blank" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">LinkedIn profile</div>
+                    </a>
+                    <a href="https://instagram.com/pramajaya__" target="_blank" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Instagram account</div>
+                    </a>
+                    <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Twitter updates</div>
+                    </a>
+                    <a href="https://facebook.com/Pramajaya" target="_blank" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Facebook page</div>
+                    </a>
+                    <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
+                        <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Dribbble</div>
                     </a>
                 </div>
             </div>
         </div>
-
-        <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <p class="text-center text-sm text-gray-600 dark:text-gray-400">
-                &copy; {{ date('Y') }} Portfolio. All rights reserved.
-            </p>
+        
+        <!-- Footer Bottom -->
+        <div class="self-stretch flex flex-col justify-start items-start gap-8">
+            <div class="self-stretch h-0 outline outline-2 outline-offset-[-1px] outline-white/20"></div>
+            <div class="self-stretch inline-flex flex-col lg:flex-row justify-between items-center gap-4">
+                <!-- Logo/Name -->
+                <a href="{{ route('home') }}" class="text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7 hover:text-[#7FFFD4] transition-colors">
+                    Pramajaya
+                </a>
+                
+                <!-- Copyright -->
+                <div class="flex justify-start items-center gap-6">
+                    <div class="justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">
+                        © 2025 Portfolio Pramajaya. All rights reserved.
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</footer>
-
+</div>

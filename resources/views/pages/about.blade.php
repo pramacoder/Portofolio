@@ -3,147 +3,283 @@
 @section('title', 'About - Portfolio')
 
 @section('content')
-<!-- About Hero Section -->
-<section class="py-12 lg:py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center mb-12 lg:mb-16">
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">
-                About Me
-            </h1>
-            <p class="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-                Passionate developer and designer creating digital experiences that matter
-            </p>
-        </div>
-
-        <!-- Profile Section - Mobile: Stacked, Desktop: Side by Side -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-16 lg:mb-20">
-            <!-- Image - Mobile First -->
-            <div class="order-1 lg:order-1 flex justify-center lg:justify-start">
-                <div class="relative w-full max-w-sm">
-                    <div class="aspect-square rounded-2xl bg-gradient-to-br from-blue-400 to-purple-500 dark:from-blue-600 dark:to-purple-700 shadow-2xl overflow-hidden">
-                        <img src="{{ asset('images/portfolio/hero/profile.jpg') }}" 
-                             alt="Profile" 
-                             class="w-full h-full object-cover"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="hidden w-full h-full items-center justify-center text-white text-2xl font-bold">
-                            Profile Photo
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Content - Mobile Second, Desktop First -->
-            <div class="order-2 lg:order-2">
-                <h2 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">
-                    Hi, I'm Your Name
-                </h2>
-                <div class="space-y-4 text-gray-600 dark:text-gray-400 text-base lg:text-lg">
-                    <p>
-                        I'm a full-stack developer with a passion for creating beautiful, functional, and user-centered digital experiences. With over 5 years of experience in web development, I've worked with various technologies and frameworks.
-                    </p>
-                    <p>
-                        My expertise includes front-end development with modern JavaScript frameworks, back-end development with Laravel and PHP, and UI/UX design. I'm always eager to learn new technologies and improve my skills.
-                    </p>
-                    <p>
-                        When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or sharing knowledge with the developer community.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Experience & Education Section -->
-<section class="py-12 lg:py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            <!-- Experience -->
-            <div>
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">
-                    Experience
-                </h2>
-                <div class="space-y-6">
-                    @for($i = 1; $i <= 3; $i++)
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
-                        <div class="flex items-start justify-between mb-2">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Senior Developer
-                            </h3>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">2020 - Present</span>
-                        </div>
-                        <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">Company Name {{ $i }}</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm lg:text-base">
-                            Led development of multiple web applications using Laravel, Vue.js, and modern CSS frameworks. Collaborated with cross-functional teams to deliver high-quality products.
-                        </p>
-                    </div>
-                    @endfor
-                </div>
-            </div>
-
-            <!-- Education -->
-            <div>
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">
-                    Education
-                </h2>
-                <div class="space-y-6">
-                    @for($i = 1; $i <= 2; $i++)
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
-                        <div class="flex items-start justify-between mb-2">
-                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                Bachelor's Degree
-                            </h3>
-                            <span class="text-sm text-gray-500 dark:text-gray-400">2015 - 2019</span>
-                        </div>
-                        <p class="text-blue-600 dark:text-blue-400 font-medium mb-2">University Name</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm lg:text-base">
-                            Computer Science - Focused on software engineering, web development, and database management.
-                        </p>
-                    </div>
-                    @endfor
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Skills & Tools Section -->
-<section class="py-12 lg:py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl lg:text-4xl font-bold text-center text-gray-900 dark:text-white mb-8 lg:mb-12">
-            Skills & Tools
-        </h2>
+<div class="w-full flex flex-col justify-start items-start overflow-hidden bg-black">
+    <!-- About Hero Section with Background Image -->
+    <div class="self-stretch relative min-h-[600px] lg:h-[900px] flex flex-col justify-center items-center overflow-hidden" 
+         style="background-image: url('{{ asset('images/portfolio/hero/AboutHero.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <!-- Dark Overlay for Readability -->
+        <div class="absolute inset-0 bg-black/60"></div>
         
-        <div class="max-w-4xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <!-- Hero Content Section -->
+        <div class="relative z-10 self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 inline-flex justify-center items-start gap-8 lg:gap-20">
+            <div class="flex-1 max-w-[1280px] inline-flex flex-col justify-start items-start gap-8 lg:gap-20">
+                <div class="self-stretch flex-1 inline-flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-20">
+                    <!-- Left Content -->
+                    <div class="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-6 lg:gap-8">
+                        <!-- Main Heading -->
+                        <div class="self-stretch justify-start text-left">
+                            <div class="text-white text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight lg:leading-[92.40px] drop-shadow-lg">Digital</div>
+                            <div class="text-[#7FFFD4] text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight lg:leading-[92.40px] drop-shadow-lg">transformat</div>
+                            <div class="text-[#7FFFD4] text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight lg:leading-[92.40px] drop-shadow-lg">ion</div>
+                        </div>
+                        
+                        <!-- Buttons/Tags -->
+                        <div class="inline-flex flex-col sm:flex-row justify-start items-start gap-4 flex-wrap">
+                            <div class="px-4 py-2 bg-transparent rounded-md border-2 border-white flex justify-center items-center">
+                                <div class="text-white text-base lg:text-lg font-medium leading-6 lg:leading-7">Website Creator</div>
+                            </div>
+                            <div class="px-4 py-2 bg-transparent rounded-md border-2 border-white flex justify-center items-center">
+                                <div class="text-white text-base lg:text-lg font-medium leading-6 lg:leading-7">Desain UI</div>
+                            </div>
+                            <!-- Barcelona Fans with gradient border -->
+                            <div class="p-[2px] rounded-md bg-gradient-to-r from-red-500 to-blue-500">
+                                <div class="px-4 py-2 bg-black rounded-md flex justify-center items-center">
+                                    <div class="text-white text-base lg:text-lg font-medium leading-6 lg:leading-7">Barcelona Fans</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Content - Description -->
+                    <div class="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-4">
+                        <div class="self-stretch justify-start text-left text-[#7FFFD4] text-base sm:text-lg lg:text-xl font-normal leading-6 sm:leading-7 lg:leading-8 drop-shadow-lg">
+                            A complete redesign that moved the needle. The site now converts better and users stay longer.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
+        <div class="w-full max-w-[1280px] flex flex-col justify-start items-center gap-12 lg:gap-20">
+            <div class="self-stretch inline-flex flex-col lg:flex-row justify-start items-center gap-8 lg:gap-20">
+                <!-- Image -->
+                <div class="flex-1 flex justify-center lg:justify-center">
+                    <div class="relative w-full max-w-sm overflow-visible">
+                        <!-- Background Text: PRAMA JAYA -->
+                        <div class="absolute inset-0 flex flex-col justify-center items-center z-0 pointer-events-none overflow-visible">
+                            <div class="text-[#7FFFD4] text-7xl lg:text-[10rem] font-black leading-none opacity-50 select-none whitespace-nowrap" style="font-family: 'Arial Black', sans-serif;">
+                                PRAMA
+                            </div>
+                            <div class="text-[#7FFFD4] text-7xl lg:text-[10rem] font-black leading-none opacity-50 select-none mt-2 whitespace-nowrap" style="font-family: 'Arial Black', sans-serif;">
+                                JAYA
+                            </div>
+                        </div>
+                        
+                        <!-- Photo Container -->
+                        <div class="relative z-10 rounded-2xl overflow-hidden">
+                            <img src="{{ asset('Photodiri.png') }}" 
+                                 alt="Profile" 
+                                 class="w-full h-auto object-contain"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="hidden w-full h-full items-center justify-center text-white text-2xl font-bold bg-black min-h-[400px]">
+                                Profile Photo
+                            </div>
+                            
+                            <!-- Gradient Overlay Bottom (Black to Transparent) -->
+                            <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="flex-1 flex flex-col justify-start items-start gap-6">
+                    <h2 class="text-[#7FFFD4] text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[60px]">
+                        Hi, I'm Pramajaya
+                    </h2>
+                    <div class="space-y-4 text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">
+                        <p>
+                            I'm a full-stack developer with a passion for creating beautiful, functional, and user-centered digital experiences. With over 5 years of experience in web development, I've worked with various technologies and frameworks.
+                        </p>
+                        <p>
+                            My expertise includes front-end development with modern JavaScript frameworks, back-end development with Laravel and PHP, and UI/UX design. I'm always eager to learn new technologies and improve my skills.
+                        </p>
+                        <p>
+                            When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or sharing knowledge with the developer community.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience & Education Section -->
+    <div class="self-stretch relative px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-[#1A1A1A] flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
+        <!-- Background Decorative Elements -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <!-- Large Circle Top Left -->
+            <div class="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-[#7FFFD4]/10 blur-3xl"></div>
+            
+            <!-- Medium Circle Bottom Right -->
+            <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[#7FFFD4]/15 blur-3xl"></div>
+            
+            <!-- Small Circle Center -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-[#7FFFD4]/5 blur-2xl"></div>
+            
+            <!-- Gradient Blob Top Right -->
+            <div class="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-[#7FFFD4]/20 to-[#7FFFD4]/5 rounded-full blur-3xl"></div>
+            
+            <!-- Gradient Blob Bottom Left -->
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#7FFFD4]/15 to-transparent rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="relative z-10 w-full max-w-[1280px] flex flex-col justify-start items-start gap-12 lg:gap-20">
+            <div class="self-stretch inline-flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-12">
+                <!-- Experience -->
+                <div class="flex-1 flex flex-col justify-start items-start gap-6 lg:gap-8">
+                    <h2 class="text-[#7FFFD4] text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[60px]">
+                        Experience
+                    </h2>
+                    <div class="self-stretch flex flex-col justify-start items-start gap-6">
+                        @foreach([
+                            [
+                                'position' => 'Event Contribution Coordinator',
+                                'organization' => 'Supremasi 17',
+                                'period' => 'April 2024',
+                                'description' => 'Coordinated and managed contributions required for Supremasi event operations. Demonstrated reliability in team collaboration and resource allocation to ensure smooth event execution.'
+                            ],
+                            [
+                                'position' => 'Facilities & Equipment Coordinator',
+                                'organization' => 'DPM FMIPA - Community Service Program',
+                                'period' => 'March 2025',
+                                'description' => 'Managed venue arrangements and equipment logistics for community service initiatives. Ensured proper setup before events and organized teardown procedures, maintaining operational excellence throughout activities.'
+                            ],
+                            [
+                                'position' => 'Master of Ceremony',
+                                'organization' => 'National Informatics Webinar - Udayana University',
+                                'period' => 'April 14, 2025',
+                                'description' => 'Served as Master of Ceremony for a large-scale national webinar in informatics. Facilitated program flow, engaged audience participation, and maintained professional presentation standards throughout the event.'
+                            ],
+                            [
+                                'position' => 'Facilities & Equipment Coordinator',
+                                'organization' => 'Supremasi 18',
+                                'period' => 'April 2025',
+                                'description' => 'Led venue and equipment management operations for Supremasi 18 event. Coordinated pre-event setup and post-event logistics, ensuring seamless operations and maintaining high standards of organization.'
+                            ]
+                        ] as $experience)
+                        <div class="self-stretch p-6 rounded-lg border-2 border-white/10 bg-black/50">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-2">
+                                <h3 class="text-white text-xl lg:text-2xl font-semibold leading-6 lg:leading-7">
+                                    {{ $experience['position'] }}
+                                </h3>
+                                <span class="text-[#E5E5E5] text-sm lg:text-base font-normal">{{ $experience['period'] }}</span>
+                            </div>
+                            <p class="text-[#7FFFD4] text-base lg:text-lg font-medium mb-2">{{ $experience['organization'] }}</p>
+                            <p class="text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">
+                                {{ $experience['description'] }}
+                            </p>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="flex-1 flex flex-col justify-start items-start gap-6 lg:gap-8">
+                    <h2 class="text-[#7FFFD4] text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[60px]">
+                        Education
+                    </h2>
+                    <div class="self-stretch flex flex-col justify-start items-start gap-6">
+                        @foreach([
+                            [
+                                'title' => 'High School Diploma',
+                                'institution' => 'SMA Negeri 5 Denpasar',
+                                'period' => '2020 - 2023',
+                                'major' => 'Science (MIPA)',
+                                'description' => 'Completed high school education with focus on Mathematics and Natural Sciences, building strong analytical and problem-solving foundation.'
+                            ],
+                            [
+                                'title' => 'Bachelor\'s Degree in Informatics',
+                                'institution' => 'Udayana University',
+                                'period' => '2023 - Present',
+                                'major' => null,
+                                'description' => 'Currently pursuing Bachelor\'s degree in Informatics Engineering, focusing on software development, data structures, algorithms, and modern web technologies.'
+                            ]
+                        ] as $education)
+                        <div class="self-stretch p-6 rounded-lg border-2 border-white/10 bg-black/50">
+                            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-2">
+                                <h3 class="text-white text-xl lg:text-2xl font-semibold leading-6 lg:leading-7">
+                                    {{ $education['title'] }}
+                                </h3>
+                                <span class="text-[#E5E5E5] text-sm lg:text-base font-normal">{{ $education['period'] }}</span>
+                            </div>
+                            <p class="text-[#7FFFD4] text-base lg:text-lg font-medium mb-2">{{ $education['institution'] }}</p>
+                            @if($education['major'])
+                            <p class="text-[#7FFFD4] text-sm lg:text-base font-medium mb-2">{{ $education['major'] }}</p>
+                            @endif
+                            <p class="text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">
+                                {{ $education['description'] }}
+                            </p>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills & Tools Section -->
+    <div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
+        <div class="w-full max-w-[1280px] flex flex-col justify-start items-center gap-12 lg:gap-20">
+            <!-- Header -->
+            <div class="w-full max-w-[768px] flex flex-col justify-start items-center gap-4">
+                <div class="inline-flex justify-start items-center">
+                    <div class="text-center text-white text-base font-semibold leading-6">Skills</div>
+                </div>
+                <div class="self-stretch flex flex-col justify-start items-center gap-6">
+                    <div class="self-stretch text-center text-[#7FFFD4] text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight lg:leading-[72px]">Skills & Tools</div>
+                    <div class="self-stretch text-center text-white text-lg lg:text-xl font-normal leading-7 lg:leading-8">
+                        Technologies and tools I work with to bring ideas to life
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills Grid -->
+            <div class="self-stretch grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
                 @foreach([
-                    'Laravel', 'PHP', 'Vue.js', 'React', 
-                    'JavaScript', 'TypeScript', 'Tailwind CSS', 'Alpine.js',
-                    'MySQL', 'PostgreSQL', 'Git', 'Docker',
-                    'Figma', 'Adobe XD', 'Photoshop', 'Illustrator'
+                    ['name' => 'Event Management & Coordination', 'icon' => 'eventmanagement.svg'],
+                    ['name' => 'Public Speaking & MC', 'icon' => 'mc.svg'],
+                    ['name' => 'Team Collaboration', 'icon' => 'teamwork.svg'],
+                    ['name' => 'Logistics Planning', 'icon' => 'checklist.svg'],
+                    ['name' => 'Problem Solving', 'icon' => 'problem-solving.svg'],
+                    ['name' => 'Laravel', 'icon' => 'laravel.svg'],
+                    ['name' => 'PHP', 'icon' => 'php.svg'],
+                    ['name' => 'Next.js', 'icon' => 'nextjs-icon-svgrepo-com.svg'],
+                    ['name' => 'JavaScript', 'icon' => 'javascript.svg'],
+                    ['name' => 'TypeScript', 'icon' => 'typescript.svg'],
+                    ['name' => 'Tailwind CSS', 'icon' => 'tailwind-css.svg'],
+                    ['name' => 'Web Development', 'icon' => 'web-development.svg'],
+                    ['name' => 'Machine Learning, AI, & Data Science', 'icon' => 'python.svg'],
+                    ['name' => 'MySQL', 'icon' => 'mysql.svg'],
+                    ['name' => 'Git', 'icon' => 'github.svg'],
+                    ['name' => 'Figma', 'icon' => 'figma.svg']
                 ] as $skill)
-                <div class="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:shadow-md transition-shadow">
-                    <div class="text-2xl mb-2">🔧</div>
-                    <h3 class="text-sm lg:text-base font-medium text-gray-900 dark:text-white">{{ $skill }}</h3>
+                <div class="flex flex-col items-center justify-center gap-3 p-4 lg:p-6 rounded-lg border-2 border-white/10 bg-[#1A1A1A] hover:border-[#7FFFD4]/50 transition-colors">
+                    <img src="{{ asset($skill['icon']) }}" alt="{{ $skill['name'] }}" class="w-8 h-8 lg:w-10 lg:h-10 object-contain">
+                    <h3 class="text-white text-sm lg:text-base font-medium leading-5 lg:leading-6 text-center">{{ $skill['name'] }}</h3>
                 </div>
                 @endforeach
             </div>
         </div>
     </div>
-</section>
 
-<!-- CTA Section -->
-<section class="py-12 lg:py-20 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-700 dark:to-purple-700">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">
-            Let's Work Together
-        </h2>
-        <p class="text-lg lg:text-xl text-blue-100 mb-8 lg:mb-10 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
-        </p>
-        <a href="{{ route('contact') }}" class="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-            Get In Touch
-        </a>
+    <!-- CTA Section -->
+    <div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
+        <div class="w-full max-w-[1280px] flex flex-col justify-start items-center gap-8 lg:gap-12">
+            <div class="w-full max-w-[768px] flex flex-col justify-start items-center gap-6">
+                <h2 class="text-center text-[#7FFFD4] text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight lg:leading-[60px]">
+                    Let's Work Together
+                </h2>
+                <p class="text-center text-white text-lg lg:text-xl font-normal leading-7 lg:leading-8">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+                </p>
+            </div>
+            <a href="{{ route('contact') }}" class="px-6 py-2.5 bg-[#7FFFD4] rounded-md border-2 border-[#7FFFD4] flex justify-center items-center gap-2 hover:bg-[#7FFFD4]/80 transition-colors">
+                <div class="text-black text-lg font-medium leading-7">Get In Touch</div>
+            </a>
+        </div>
     </div>
-</section>
+</div>
 @endsection
 

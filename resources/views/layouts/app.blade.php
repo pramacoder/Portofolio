@@ -19,6 +19,7 @@
     
     @if(request()->routeIs('home'))
         @yield('content')
+        @include('components.footer')
     @else
         <div class="min-h-screen bg-white dark:bg-gray-900">
             <main>
