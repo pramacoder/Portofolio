@@ -1,0 +1,435 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════
+   DESIGN TOKENS — Pramajaya Portfolio
+   Referensi: rig.ai visual language
+   ═══════════════════════════════════════════════ */
+
+:root {
+  /* Backgrounds */
+  --ink:          #000000;
+  --ink-alt:      #0a0a0a;
+  --surface:      #1A1A1A;
+  --surface-2:    #111111;
+
+  /* Borders */
+  --border:       rgba(255,255,255,0.10);
+  --border-md:    rgba(255,255,255,0.18);
+  --border-hi:    rgba(255,255,255,0.28);
+
+  /* Text */
+  --paper:        #FFFFFF;
+  --paper-60:     rgba(255,255,255,0.60);
+  --paper-40:     rgba(255,255,255,0.40);
+  --paper-25:     rgba(255,255,255,0.25);
+  --muted:        #E5E5E5;
+
+  /* Accent — Aquamarine */
+  --accent:       #7FFFD4;
+  --accent-dim:   rgba(127,255,212,0.12);
+  --accent-20:    rgba(127,255,212,0.20);
+  --accent-50:    rgba(127,255,212,0.50);
+
+  --background: var(--ink);
+  --foreground: var(--paper);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-instrument-sans);
+  --font-mono: 'Chivo Mono', ui-monospace, monospace;
+}
+
+/* ═══ BASE ═══════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ═══ CONTENT LINES (Background vertical grid) ═══ */
+
+.content-lines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 25% 100%;
+}
+
+/* ═══ NOISE TEXTURE ══════════════════════════════ */
+
+.noise {
+  position: fixed;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9998;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ═══ SCANLINES ══════════════════════════════════ */
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9997;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.025) 2px,
+    rgba(0,0,0,0.025) 4px
+  );
+}
+
+/* ═══ SECTION DIVIDER ════════════════════════════ */
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ═══ BADGE / MONO LABEL ═════════════════════════ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid var(--accent-50);
+  color: var(--accent);
+  font-family: 'Chivo Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+/* ═══ MONO LABEL (inline) ════════════════════════ */
+
+.mono-label {
+  font-family: 'Chivo Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ═══ BUTTON — CHAMFER STYLE ═════════════════════ */
+
+.btn-chamfer {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-chamfer:hover {
+  filter: brightness(1.1);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  border: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--paper);
+  border: 1px solid var(--border-md);
+}
+
+.btn-ghost:hover {
+  border-color: var(--border-hi);
+}
+
+/* ═══ NUMBERED CARD ══════════════════════════════ */
+
+.numbered-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  background: transparent;
+  transition: border-color 0.2s ease;
+}
+
+.numbered-card:hover {
+  border-color: var(--accent-50);
+}
+
+.numbered-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.numbered-card-label {
+  font-family: 'Chivo Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.numbered-card-number {
+  font-family: 'Chivo Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--paper-25);
+}
+
+/* ═══ EXPERIENCE CARD ════════════════════════════ */
+
+.experience-card {
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  background: rgba(0,0,0,0.5);
+  transition: border-color 0.2s ease;
+}
+
+/* ═══ SKILL CARD ═════════════════════════════════ */
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.2s ease;
+}
+
+.skill-card:hover {
+  border-color: var(--accent-50);
+}
+
+/* ═══ TICKER / MARQUEE ═══════════════════════════ */
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--ink-alt);
+  padding: 0.75rem 0;
+}
+
+.ticker-inner {
+  display: inline-flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: marquee 28s linear infinite;
+}
+
+.ticker-wrap:hover .ticker-inner {
+  animation-play-state: paused;
+}
+
+.ticker-item {
+  font-family: 'Chivo Mono', ui-monospace, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--paper-60);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ticker-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══ STATUS DOT ═════════════════════════════════ */
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 0;
+  flex-shrink: 0;
+  animation: blink 1.5s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ═══ REVEAL ON SCROLL ═══════════════════════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══ FORM FIELDS ════════════════════════════════ */
+
+.field-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border-md);
+  border-radius: 0;
+  color: var(--muted);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.field-input::placeholder {
+  color: var(--paper-25);
+}
+
+.field-input:focus {
+  border-color: var(--accent);
+}
+
+.field-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+/* ═══ BLUEPRINT DECORATION ═══════════════════════ */
+
+.blueprint-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* ═══ WATERMARK TEXT ═════════════════════════════ */
+
+.watermark {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.04;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--accent);
+  font-family: 'Arial Black', 'Arial', sans-serif;
+}
+
+/* ═══ FILTER BUTTONS ═════════════════════════════ */
+
+.filter-btn {
+  padding: 0.5rem 1.25rem;
+  font-family: 'Chivo Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-md);
+  background: transparent;
+  color: var(--paper-60);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+/* ═══ PROJECT CARD ═══════════════════════════════ */
+
+.project-card {
+  background: var(--ink-alt);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.project-card:hover {
+  border-color: var(--accent-50);
+}
+
+/* ═══ SCROLLBAR ══════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hi);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-50);
+}
+
+/* ═══ SELECTION ══════════════════════════════════ */
+
+::selection {
+  background: var(--accent-20);
+  color: var(--accent);
+}
