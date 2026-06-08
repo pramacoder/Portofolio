@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Certificates from "@/components/Certificates";
 
 const EXPERIENCE = [
   {
@@ -264,6 +265,11 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <div className="section-divider" />
+
+      {/* ═══ CERTIFICATES ════════════════════════════════ */}
+      <Certificates />
 
       <div className="section-divider" />
 

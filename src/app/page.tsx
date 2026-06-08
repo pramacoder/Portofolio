@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Certificates from "@/components/Certificates";
 
 const TICKER_ITEMS = [
   "Website Developer",
@@ -612,6 +613,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="section-divider" />
+
+      {/* ═══ CERTIFICATES ════════════════════════════════ */}
+      <Certificates />
 
       <div className="section-divider" />
     </div>
