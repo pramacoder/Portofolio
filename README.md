@@ -1,138 +1,75 @@
-# Portfolio Website
+# Pramajaya — Personal Developer Portfolio
 
-Website portfolio profesional yang dibangun dengan Laravel, Tailwind CSS, dan Alpine.js.
+Personal portfolio website for **Pramajaya** (`@pramacoder`), Informatics student at **Universitas Udayana**, showcasing verified full-stack web applications, AI/ML/NLP research, Information Retrieval systems, skills, academic background, and technical writing.
 
-## Fitur
+Built with **Laravel 12**, **Blade Components**, **Tailwind CSS v4**, **Alpine.js 3**, and **Vite 7**, inspired structurally by a calm sidebar-first portfolio layout while implementing an original **Sage-Editorial** Light/Dark design system and **Geist** typography.
 
--   ✅ 4 Halaman Responsive (Home, About, Projects, Contact)
--   ✅ Design Mobile & Desktop (8 desain dari Figma)
--   ✅ Dark Mode Support
--   ✅ Alpine.js untuk interaktivitas
--   ✅ Tailwind CSS 4 untuk styling
--   ✅ Modern UI/UX
+---
 
-## Teknologi
+## Features
 
--   **Backend**: Laravel 12
--   **Frontend**: Tailwind CSS 4, Alpine.js
--   **Build Tool**: Vite
--   **PHP**: >= 8.2
+- **Persistent Collapsible Sidebar + Mobile Offcanvas Drawer** (`256px` expanded, `68px` icon rail, sticky `56px` mobile header)
+- **Light & Dark Theme Switcher** with zero-flash `localStorage` persistence and CSS custom property tokens
+- **Full Bilingual Support (`ID` / `EN`)** across navigation, hero, bio, 12 project case studies, skills, experience, education, blog articles, and contact form
+- **12 Verified GitHub Projects** sourced directly from [github.com/pramacoder](https://github.com/pramacoder) with live tag filtering, search, and detailed Problem / Solution / Outcomes case studies
+- **Technical Blog** with search, category tabs, and full article views linked to related repositories
+- **Downloadable PDF CV** (`public/documents/cv-pramajaya.pdf`)
+- **Validated Contact Form** with honeypot spam protection and direct contact cards
+- **SEO & Accessibility** including per-page meta/Open Graph tags, semantic landmarks, skip-to-content link, keyboard focus rings, `robots.txt`, and dynamic `/sitemap.xml`
 
-## Instalasi
+---
 
-### Development
+## Implemented Routes
+
+| Route | Description |
+|---|---|
+| `/` | Homepage (Hero, Intro, Tech Stack, Exploration Highlights, Core Skills, Featured Projects, Latest Blog, Contact CTA) |
+| `/about` | Personal story, Universitas Udayana background, focus areas & principles |
+| `/projects` | Full searchable & tag-filterable portfolio (12 verified GitHub repositories) |
+| `/projects/{slug}` | Case study detail page (Overview, Problem, Solution, Verification, Stack, GitHub & Live Demo) |
+| `/experience` | Verified engineering & academic project timeline |
+| `/education` | Universitas Udayana S1 Informatika & continuous learning |
+| `/skills` | Hard Skills grid, Soft Skills & Languages |
+| `/blog` | Searchable & category-filtered technical articles |
+| `/blog/{slug}` | Full article detail reader with related GitHub project |
+| `/contact` | Validated contact form & direct contact information |
+| `/links` | Quick links to GitHub, live deployed apps, top repositories & CV |
+| `/locale/{id\|en}` | Bilingual session language switcher |
+| `/sitemap.xml` | Dynamic XML sitemap |
+
+---
+
+## Local Development
 
 ```bash
-# Clone repository
-git clone <repository-url>
-cd PortofolioWeb
-
-# Install PHP dependencies
+# Install dependencies
 composer install
-
-# Install Node.js dependencies
 npm install
 
-# Copy environment file
-cp .env.example .env
+# Build frontend assets (or run `npm run dev` for HMR)
+npm run build
 
-# Generate application key
-php artisan key:generate
+# Run automated test suite
+php artisan test
 
-# Setup database (edit .env terlebih dahulu)
-php artisan migrate
-
-# Build assets
-npm run dev
-
-# Jalankan development server
+# Serve locally (or open via Laragon)
 php artisan serve
 ```
 
-### Production
+---
 
-Lihat file [DEPLOYMENT.md](DEPLOYMENT.md) untuk panduan lengkap deployment.
+## Deployment Notes
 
-## Struktur Project
+- **Laravel Hosting (Forge / Render / Railway / VPS / Laragon):** Run `composer install --no-dev --optimize-autoloader`, `npm ci && npm run build`, `php artisan config:cache`, `php artisan route:cache`, and `php artisan view:cache`.
+- **Environment Variables:** Ensure `APP_KEY`, `APP_URL`, and `APP_ENV=production` are set in `.env`. No external database is required for portfolio content (stored centrally in `app/Data/PortfolioData.php`).
+- **Customizing Owner Info:** Update email, social links, or projects in `app/Data/PortfolioData.php`, and replace `public/documents/cv-pramajaya.pdf` with a custom CV PDF anytime.
 
-```
-PortofolioWeb/
-├── app/                    # Application logic
-├── config/                 # Configuration files
-├── database/              # Migrations & seeders
-├── public/                # Public assets
-│   ├── images/
-│   │   └── portfolio/     # Portfolio images
-│   │       ├── hero/
-│   │       ├── projects/
-│   │       └── testimonials/
-│   └── index.php         # Entry point
-├── resources/
-│   ├── css/
-│   │   └── app.css       # Tailwind CSS
-│   ├── js/
-│   │   └── app.js        # Alpine.js setup
-│   └── views/
-│       ├── components/   # Reusable components
-│       ├── layouts/      # Layout templates
-│       └── pages/        # Page templates
-├── routes/
-│   └── web.php           # Web routes
-└── vite.config.js        # Vite configuration
-```
+---
 
-## Halaman
+## Project Documentation
 
--   **Home** (`/`) - Halaman utama dengan hero section dan featured projects
--   **About** (`/about`) - Tentang saya, experience, dan skills
--   **Projects** (`/projects`) - Portfolio projects dengan filter
--   **Contact** (`/contact`) - Form kontak dan informasi
-
-## Menambahkan Gambar
-
-1. Upload gambar hero ke `public/images/portfolio/hero/`
-2. Upload gambar project ke `public/images/portfolio/projects/`
-3. Update path gambar di file view sesuai kebutuhan
-
-## Customization
-
-### Mengubah Konten
-
-Edit file di `resources/views/pages/`:
-
--   `home.blade.php` - Konten halaman home
--   `about.blade.php` - Konten halaman about
--   `projects.blade.php` - Konten halaman projects
--   `contact.blade.php` - Konten halaman contact
-
-### Mengubah Styling
-
-Edit file `resources/css/app.css` atau gunakan Tailwind classes langsung di Blade templates.
-
-### Mengubah Navigation
-
-Edit file `resources/views/components/header.blade.php`
-
-## Development Commands
-
-```bash
-# Development server dengan hot reload
-npm run dev
-
-# Build untuk production
-npm run build
-
-# Clear cache
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-```
-
-## License
-
-MIT License
-
-## Support
-
-Untuk pertanyaan atau masalah, silakan buat issue di repository ini.
+- [docs/reference-analysis.md](docs/reference-analysis.md)
+- [docs/implementation-plan.md](docs/implementation-plan.md)
+- [docs/design-system.md](docs/design-system.md)
+- [docs/content-inventory.md](docs/content-inventory.md)
+- [docs/qa-report.md](docs/qa-report.md)

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#F3F6F1"/>
+  <g opacity="0.18">
+    <path d="M0 75H800M0 150H800M0 225H800M0 300H800M0 375H800" stroke="#3F6B50" stroke-width="1"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450" stroke="#3F6B50" stroke-width="1"/>
+  </g>
+  <rect x="460" y="58" width="290" height="200" rx="14" fill="#FFFFFF" stroke="#D5DFD2"/>
+      <rect x="488" y="90" width="210" height="14" rx="7" fill="#527A61"/>
+      <rect x="488" y="122" width="168" height="12" rx="6" fill="#77AA8A"/>
+      <rect x="488" y="152" width="234" height="12" rx="6" fill="#A5C4AE"/>
+      <rect x="488" y="182" width="190" height="12" rx="6" fill="#DDE8DA"/>
+  <rect x="44" y="42" width="217" height="30" rx="15" fill="#3F6B50" fill-opacity="0.14" stroke="#3F6B50" stroke-opacity="0.35"/>
+  <text x="60" y="61" fill="#3F6B50" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600">INFORMATION RETRIEVAL</text>
+  <text x="44" y="346" fill="#202820" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5">TF-IDF &amp; Okapi BM25</text>
+  <text x="44" y="382" fill="#5B665C" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400">Designing a Multi-Corpus Academic Search Engine</text>
+</svg>

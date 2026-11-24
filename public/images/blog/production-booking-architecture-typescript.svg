@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#F6F5EE"/>
+  <g opacity="0.18">
+    <path d="M0 75H800M0 150H800M0 225H800M0 300H800M0 375H800" stroke="#3E6850" stroke-width="1"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450" stroke="#3E6850" stroke-width="1"/>
+  </g>
+  <rect x="466" y="64" width="280" height="190" rx="14" fill="#FFFFFF" stroke="#D5DFD2"/>
+      <rect x="490" y="92" width="232" height="28" rx="6" fill="#EDF3EB"/>
+      <rect x="490" y="134" width="160" height="28" rx="6" fill="#DDE8DA"/>
+      <rect x="490" y="176" width="200" height="28" rx="6" fill="#527A61"/>
+  <rect x="44" y="42" width="154" height="30" rx="15" fill="#3E6850" fill-opacity="0.14" stroke="#3E6850" stroke-opacity="0.35"/>
+  <text x="60" y="61" fill="#3E6850" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600">FULL-STACK WEB</text>
+  <text x="44" y="346" fill="#202820" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5">Reliable Booking Systems</text>
+  <text x="44" y="382" fill="#5B665C" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400">Testing, Audit Trails &amp; Midtrans in TypeScript</text>
+</svg>

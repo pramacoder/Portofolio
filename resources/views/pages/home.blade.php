@@ -1,460 +1,226 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Portfolio')
+@section('title', $profile['name'] . ' — ' . $profile['headline_role'])
+@section('meta_description', $profile['intro'])
 
 @section('content')
-<div class="w-full flex flex-col justify-start items-start overflow-hidden bg-black">
-    
-    <!-- Hero Section with Background Image -->
-    <div class="self-stretch relative min-h-[600px] lg:h-[900px] flex flex-col justify-center items-center overflow-hidden" 
-         style="background-image: url('{{ asset('images/portfolio/hero/Homepage.jpeg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-        <!-- Dark Overlay for Readability -->
-        <div class="absolute inset-0 bg-black/60"></div>
-        
-        <!-- Hero Content Section -->
-        <div class="relative z-10 self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 inline-flex justify-center items-start gap-8 lg:gap-20">
-            <div class="flex-1 max-w-[1280px] inline-flex flex-col justify-start items-start gap-8 lg:gap-20">
-                <div class="self-stretch flex-1 inline-flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-20">
-                    <!-- Left Content -->
-                    <div class="flex-1 self-stretch inline-flex flex-col justify-center items-center lg:items-start gap-6 lg:gap-8">
-                        <!-- Mobile: Stacked, Desktop: Inline -->
-                        <div class="self-stretch justify-start text-center lg:text-left">
-                            <span class="text-white text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight lg:leading-[92.40px] drop-shadow-lg">Pramajaya </span>
-                            <span class="text-[#7FFFD4] text-4xl sm:text-5xl lg:text-6xl xl:text-8xl font-bold leading-tight lg:leading-[92.40px] drop-shadow-lg">Website Developer</span>
-                        </div>
-                        
-                        <!-- CTA Buttons - Mobile: Centered, Desktop: Inline -->
-                        <div class="inline-flex flex-col sm:flex-row justify-center items-center sm:justify-start sm:items-start gap-4">
-                            <a href="{{ route('projects') }}" class="px-6 py-2.5 bg-white rounded-md shadow-[inset_0px_-4px_0px_0px_rgba(140,255,215,1.00)] border-2 border-[#7FFFD4] flex justify-center items-center gap-2 hover:bg-gray-100 transition-colors">
-                                <div class="text-black text-lg font-medium leading-7">Portfolio</div>
-                            </a>
-                            <a href="#" class="px-6 py-2.5 rounded-md border-2 border-[#7FFFD4] flex justify-center items-center gap-2 hover:bg-[#7FFFD4]/10 transition-colors">
-                                <div class="text-[#7FFFD4] text-lg font-medium leading-7">Resume</div>
-                            </a>
-                        </div>
+    {{-- Section 1: Hero (matches reference split layout + 4-col stat strip + circular portrait) --}}
+    <section class="py-8 sm:py-12 md:py-16">
+        <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-10">
+            <div class="flex-1 min-w-0 space-y-6 w-full">
+                <div class="space-y-3">
+                    <div class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+                        <span class="h-2 w-2 rounded-full bg-primary"></span>
+                        <span>{{ $profile['university'] }} · {{ $profile['location'] }}</span>
                     </div>
-                    
-                    <!-- Right Content - Quote -->
-                    <div class="flex-1 self-stretch inline-flex flex-col justify-end items-start gap-4">
-                        <!-- Quote - Mobile: Visible, Desktop: Right aligned -->
-                        <div class="self-stretch inline-flex justify-center lg:justify-end items-start gap-4">
-                            <div class="flex-1 text-center lg:text-right text-[#7FFFD4] text-base sm:text-lg lg:text-xl font-normal leading-6 sm:leading-7 lg:leading-8 drop-shadow-lg">
-                                Clean design meets purposeful code. Every site we create tells a story worth telling.
-                            </div>
-                        </div>
+                    <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+                        {{ $profile['name'] }}
+                    </h1>
+                    <p class="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+                        {{ $profile['headline_role'] }}
+                    </p>
+                </div>
+
+                {{-- CTA Buttons --}}
+                <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 w-full sm:w-auto">
+                    <a href="{{ route('contact') }}"
+                       class="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary-hover transition-colors w-full sm:w-auto">
+                        <span>{{ $ui['actions']['contact_me'] }}</span>
+                        <x-icon name="arrow-right" class="w-4 h-4" />
+                    </a>
+                    <div class="grid grid-cols-2 gap-3 w-full sm:flex sm:w-auto">
+                        <a href="{{ route('projects') }}"
+                           class="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-border bg-card px-4 sm:px-5 text-xs sm:text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                            <span class="truncate">{{ $ui['actions']['view_portfolio'] }}</span>
+                            <x-icon name="folder" class="w-4 h-4 shrink-0" />
+                        </a>
+                        <a href="{{ route('skills') }}"
+                           class="inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-md border border-border bg-card px-4 sm:px-5 text-xs sm:text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                            <span class="truncate">{{ $ui['actions']['view_skills'] }}</span>
+                            <x-icon name="wrench" class="w-4 h-4 shrink-0" />
+                        </a>
                     </div>
+                </div>
+
+                {{-- Verified GitHub Statistics Strip --}}
+                <div class="pt-2">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 rounded-xl border border-border bg-card/70 overflow-hidden">
+                        @foreach($profile['stats'] as $idx => $stat)
+                            <a href="{{ $stat['href'] }}"
+                               @if($stat['external']) target="_blank" rel="noopener noreferrer" @endif
+                               class="group px-3 py-3 flex flex-col items-center text-center justify-center transition-colors hover:bg-accent/50
+                                      {{ $idx % 2 === 0 ? 'border-r border-border/70' : '' }}
+                                      {{ $idx < 2 ? 'border-b sm:border-b-0 border-border/70' : '' }}
+                                      {{ $idx < 3 ? 'sm:border-r sm:border-border/70' : '' }}">
+                                <div class="h-7 w-7 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-1.5 shrink-0 group-hover:scale-105 transition-transform">
+                                    <x-icon :name="$stat['icon']" class="w-3.5 h-3.5" />
+                                </div>
+                                <div class="text-base sm:text-lg font-extrabold text-foreground group-hover:text-primary transition-colors tracking-tight font-mono">
+                                    {{ $stat['value'] }}
+                                </div>
+                                <div class="text-[11px] sm:text-xs text-muted-foreground font-medium leading-snug mt-0.5">
+                                    {{ $stat['label'] }}
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
+            {{-- Right Column: Circular Owner Portrait --}}
+            <div class="w-full lg:w-1/3 flex justify-center">
+                <div class="relative w-52 h-52 sm:w-60 sm:h-60 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-full overflow-hidden border-4 border-primary/15 bg-muted shadow-sm shrink-0">
+                    <img src="{{ asset($profile['avatar']) }}"
+                         alt="{{ $profile['name'] }}"
+                         class="h-full w-full object-cover object-top">
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Services Section -->
-    <div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
-        <div class="w-full max-w-[1280px] flex flex-col justify-start items-center gap-12 lg:gap-20">
-            <!-- Header -->
-            <div class="w-full max-w-[768px] flex flex-col justify-start items-center gap-4">
-                <div class="inline-flex justify-start items-center">
-                    <div class="text-center text-white text-base font-semibold leading-6">Services</div>
-                </div>
-                <div class="self-stretch flex flex-col justify-start items-center gap-6">
-                    <div class="self-stretch text-center text-[#7FFFD4] text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight lg:leading-[72px]">How I Work</div>
-                    <div class="self-stretch text-center text-white text-lg lg:text-xl font-normal leading-7 lg:leading-8">
-                        We focus on the fundamentals. Good design is invisible until it isn't there.
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Services Grid - Mobile: 1 column, Desktop: 3 columns -->
-            <div class="self-stretch flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-12">
-                <!-- Custom web design -->
-                <div class="flex-1 inline-flex flex-col justify-start items-center gap-6">
-                    <div class="w-12 h-12 flex items-center justify-center">
-                        <img src="{{ asset('CostumWebDesign.svg') }}" alt="Custom web design icon" class="w-9 h-9 object-contain">
-                    </div>
-                    <div class="self-stretch flex flex-col justify-start items-center gap-6">
-                        <div class="self-stretch text-center text-white text-2xl lg:text-4xl font-bold leading-tight lg:leading-[52px]">Custom web design</div>
-                        <div class="self-stretch text-center text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">
-                            Sites built from scratch, tailored to your vision and your users.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Responsive development -->
-                <div class="flex-1 inline-flex flex-col justify-start items-center gap-6">
-                    <div class="w-12 h-12 flex items-center justify-center">
-                        <img src="{{ asset('ResponsiveIcon.svg') }}" alt="Responsive development icon" class="w-9 h-9 object-contain">
-                    </div>
-                    <div class="self-stretch flex flex-col justify-start items-center gap-6">
-                        <div class="self-stretch text-center text-white text-2xl lg:text-4xl font-bold leading-tight lg:leading-[52px]">Responsive development</div>
-                        <div class="self-stretch text-center text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">
-                            Your site works everywhere, on any screen, at any size.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Performance first -->
-                <div class="flex-1 inline-flex flex-col justify-start items-center gap-6">
-                    <div class="w-12 h-12 flex items-center justify-center">
-                        <img src="{{ asset('PerformanceIcon.svg') }}" alt="Performance first icon" class="w-8 h-8 object-contain">
-                    </div>
-                    <div class="self-stretch flex flex-col justify-start items-center gap-6">
-                        <div class="self-stretch text-center text-white text-2xl lg:text-4xl font-bold leading-tight lg:leading-[52px]">Performance first</div>
-                        <div class="self-stretch text-center text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">
-                            Fast loading times and smooth interactions keep users engaged.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Action Buttons -->
-            <div class="inline-flex flex-col sm:flex-row justify-start items-center gap-6">
-                <a href="{{ route('projects') }}" class="px-6 py-2.5 rounded-md border-2 border-[#7FFFD4] flex justify-center items-center gap-2 hover:bg-[#7FFFD4]/10 transition-colors">
-                    <div class="text-[#7FFFD4] text-lg font-medium leading-7">Explore</div>
-                </a>
-                <a href="{{ route('about') }}" class="rounded-md flex justify-center items-center gap-2 hover:opacity-80 transition-opacity">
-                    <div class="text-[#7FFFD4] text-lg font-medium leading-7">Learn</div>
-                    <img src="{{ asset('nextIcon.svg') }}" alt="" class="w-5 h-5">
-                </a>
-            </div>
-        </div>
-    </div>
+    {{-- Section 2: Introduction Card --}}
+    <x-section-card>
+        <p class="text-base sm:text-lg text-muted-foreground leading-relaxed">
+            {{ $profile['intro'] }}
+        </p>
+    </x-section-card>
 
-    <!-- Testimonials Section -->
-    <div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-[#1A1A1A] flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
-        <div class="w-full max-w-[1280px] flex flex-col justify-start items-start gap-12 lg:gap-20">
-            <!-- Header -->
-            <div class="w-full max-w-[768px] flex flex-col justify-start items-start gap-6">
-                <div class="self-stretch justify-start text-[#7FFFD4] text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight lg:leading-[72px]">Testimonials</div>
-                <div class="self-stretch justify-start text-[#E5E5E5] text-lg lg:text-xl font-normal leading-7 lg:leading-8">
-                    What clients say about working with us
-                </div>
-            </div>
-            
-            <!-- Testimonials Grid - Mobile: 1 column, Desktop: 3 columns -->
-            <div class="self-stretch flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-8">
-                @foreach([
-                    ['quote' => '"They understood what we needed before we could articulate it."', 'name' => 'Sarah Mitchell', 'role' => 'Founder, Bright Co'],
-                    ['quote' => '"The site performs beautifully and our users notice the difference."', 'name' => 'James Chen', 'role' => 'CEO, Digital First'],
-                    ['quote' => '"Professional, responsive, and they delivered on time."', 'name' => 'Emma Rodriguez', 'role' => 'Director, Studio Labs']
-                ] as $testimonial)
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-6 lg:gap-8 overflow-hidden">
-                    <!-- Stars -->
-                    <div class="inline-flex justify-start items-center gap-1 overflow-hidden">
-                        @for($i = 1; $i <= 5; $i++)
-                        <img 
-                            src="{{ asset('starIcon.svg') }}" 
-                            alt="Star rating" 
-                            class="w-5 h-5"
-                        >
-                        @endfor
+    {{-- Section 3: Technologies I Work With (Expandable 4-column tile grid matching reference) --}}
+    <x-section-card :title="$ui['sections']['tech_stack']" class="mt-12" x-data="{ expanded: false }">
+        <div class="relative">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 overflow-hidden transition-all duration-300"
+                 :class="expanded ? 'max-h-[1200px]' : 'max-h-[210px] sm:max-h-[215px]'">
+                @foreach($technologies as $tech)
+                    <div class="flex flex-col items-center justify-center p-4 bg-muted/70 hover:bg-accent/70 border border-border/60 rounded-lg h-24 transition-colors text-center">
+                        <span class="font-mono text-xs font-semibold text-primary bg-primary/10 px-2 py-0.5 rounded mb-1.5">
+                            {{ $tech['short'] }}
+                        </span>
+                        <span class="text-sm font-semibold text-foreground leading-tight">{{ $tech['name'] }}</span>
+                        <span class="text-[11px] text-muted-foreground mt-0.5">{{ $tech['category'] }}</span>
                     </div>
-                    
-                    <!-- Quote -->
-                    <div class="self-stretch justify-start text-[#E5E5E5] text-xl lg:text-2xl font-bold leading-7 lg:leading-9">
-                        {{ $testimonial['quote'] }}
-                    </div>
-                    
-                    <!-- Author -->
-                    <div class="flex flex-col justify-start items-start gap-4">
-                        <img class="w-14 h-14 rounded-full object-cover" 
-                             src="{{ asset('images/portfolio/testimonials/' . strtolower(str_replace(' ', '-', $testimonial['name'])) . '.jpg') }}" 
-                             alt="{{ $testimonial['name'] }}"
-                             onerror="this.src='https://placehold.co/56x56/1A1A1A/E5E5E5?text=' + encodeURIComponent('{{ substr($testimonial['name'], 0, 1) }}');">
-                        <div class="flex flex-col justify-start items-start">
-                            <div class="justify-start text-[#E5E5E5] text-base lg:text-lg font-semibold leading-6 lg:leading-7">{{ $testimonial['name'] }}</div>
-                            <div class="justify-start text-[#E5E5E5] text-base lg:text-lg font-normal leading-6 lg:leading-7">{{ $testimonial['role'] }}</div>
-                        </div>
-                    </div>
-                </div>
                 @endforeach
             </div>
         </div>
-    </div>
+        <div class="flex justify-center pt-2">
+            <button type="button"
+                    @click="expanded = !expanded"
+                    class="inline-flex items-center gap-1.5 rounded-md border border-border bg-background px-4 py-2 text-xs sm:text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                <span x-text="expanded ? '{{ $ui['actions']['show_less'] }}' : '{{ $ui['actions']['show_more'] }}'"></span>
+            </button>
+        </div>
+    </x-section-card>
 
-    <!-- Portfolio Section -->
-    <div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
-        <div class="w-full max-w-[1280px] flex flex-col justify-start items-start gap-12 lg:gap-20">
-            <!-- Header -->
-            <div class="w-full max-w-[768px] flex flex-col justify-start items-start gap-4">
-                <div class="inline-flex justify-start items-center">
-                    <div class="justify-start text-white text-base font-semibold leading-6">Portfolio</div>
-                </div>
-                <div class="self-stretch flex flex-col justify-start items-start gap-6">
-                    <div class="self-stretch justify-start text-[#7FFFD4] text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight lg:leading-[72px]">Recent work</div>
-                    <div class="self-stretch justify-start text-white text-lg lg:text-xl font-normal leading-7 lg:leading-8">
-                        A selection of projects that showcase our approach
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Projects List -->
-            <div class="self-stretch flex flex-col justify-start items-center gap-8 lg:gap-16">
-                @foreach([
-                    ['title' => 'Coastal Retreat', 'desc' => 'Luxury hospitality site with booking integration and gallery', 'tags' => ['Hospitality', 'Web design', 'Development']],
-                    ['title' => 'Urban Studio', 'desc' => 'Creative agency portfolio with dynamic project filtering', 'tags' => ['Creative', 'Portfolio', 'Branding']],
-                    ['title' => 'Tech Ventures', 'desc' => 'SaaS platform landing page with conversion optimization', 'tags' => ['Technology', 'SaaS', 'Marketing']]
-                ] as $index => $project)
-                <div class="self-stretch py-8 lg:py-12 border-t-2 border-[#7FFFD4] flex flex-col justify-start items-start gap-8 lg:gap-12">
-                    <div class="self-stretch inline-flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-20">
-                        <!-- Content -->
-                        <div class="flex-1 self-stretch inline-flex flex-col justify-center items-start gap-6 lg:gap-8">
-                            <div class="self-stretch flex flex-col justify-start items-start gap-4">
-                                <div class="self-stretch flex flex-col justify-start items-start gap-2">
-                                    <div class="self-stretch justify-start text-white text-2xl lg:text-4xl font-bold leading-tight lg:leading-[52px]">{{ $project['title'] }}</div>
-                                    <div class="w-full lg:w-[560px] justify-start text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">{{ $project['desc'] }}</div>
-                                </div>
-                                <!-- Tags -->
-                                <div class="self-stretch inline-flex justify-start items-start gap-2 flex-wrap content-start">
-                                    @foreach($project['tags'] as $tag)
-                                    <div class="px-2.5 py-1 bg-transparent rounded outline outline-2 outline-offset-[-2px] outline-white flex justify-start items-start">
-                                        <div class="justify-start text-white text-sm lg:text-base font-semibold leading-5 lg:leading-6">{{ $tag }}</div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            
-                            <!-- View Project Link -->
-                            <div class="self-stretch flex flex-col justify-start items-start gap-4">
-                                <a href="{{ route('projects') }}" class="rounded-md inline-flex justify-center items-center gap-2 hover:opacity-80 transition-opacity">
-                                    <div class="justify-start text-white text-base lg:text-lg font-medium leading-6 lg:leading-7">View project</div>
-                                    <div class="w-6 h-6 relative overflow-hidden">
-                                        <div class="w-1.5 h-3 left-[8.51px] top-[6.17px] absolute bg-white border border-black"></div>
-                                    </div>
-                                </a>
-                            </div>
+    {{-- Section 4: Academic & Technical Exploration (3-column visual cards matching reference) --}}
+    <x-section-card :title="$ui['sections']['highlights']" class="mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            @foreach($highlights as $item)
+                <a href="{{ $item['href'] }}"
+                   class="group rounded-lg border border-border bg-card shadow-xs overflow-hidden h-full flex flex-col justify-between transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/45 hover:shadow-md">
+                    <div>
+                        <div class="relative h-44 w-full overflow-hidden border-b border-border bg-muted/40">
+                            <img src="{{ asset($item['image']) }}"
+                                 alt="{{ $item['title'] }}"
+                                 loading="lazy"
+                                 class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]">
                         </div>
-                        
-                        <!-- Image -->
-                        <div class="flex-1 inline-flex flex-col justify-center items-end">
-                            <img class="self-stretch h-64 lg:h-96 rounded-lg object-cover" 
-                                 src="{{ asset('images/portfolio/projects/project-' . ($index + 1) . '.jpg') }}" 
-                                 alt="{{ $project['title'] }}"
-                                 onerror="this.src='https://placehold.co/600x450/1A1A1A/7FFFD4?text=' + encodeURIComponent('{{ $project['title'] }}');">
+                        <div class="p-4 sm:p-5">
+                            <div class="flex flex-wrap items-center gap-2 mb-2.5">
+                                <span class="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 text-primary text-xs font-semibold px-2.5 py-0.5">
+                                    {{ $item['badge_primary'] }}
+                                </span>
+                                <span class="inline-flex items-center rounded-full border border-border bg-muted/70 text-muted-foreground text-xs font-medium px-2.5 py-0.5">
+                                    {{ $item['badge_secondary'] }}
+                                </span>
+                            </div>
+                            <h3 class="font-semibold text-base sm:text-lg text-foreground group-hover:text-primary transition-colors line-clamp-2 leading-snug">
+                                {{ $item['title'] }}
+                            </h3>
+                            <p class="text-sm text-muted-foreground mt-2 line-clamp-3 leading-relaxed">
+                                {{ $item['description'] }}
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </x-section-card>
+
+    {{-- Section 5: Core Skills (2x2 bordered cards matching reference) --}}
+    <x-section-card :title="$ui['sections']['core_skills']" class="mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            @foreach($coreSkills as $skill)
+                <div class="rounded-lg border border-border bg-background/50 p-5 sm:p-6 transition-colors hover:border-primary/40">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-primary/10 text-primary p-2.5 rounded-md shrink-0">
+                            <x-icon :name="$skill['icon']" class="w-5 h-5" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-base text-foreground">{{ $skill['title'] }}</h3>
+                            <p class="text-sm text-muted-foreground mt-1.5 leading-relaxed">{{ $skill['description'] }}</p>
                         </div>
                     </div>
                 </div>
-                @endforeach
-                
-                <!-- View All Button -->
-                <div class="flex flex-col justify-start items-start gap-4">
-                    <a href="{{ route('projects') }}" class="px-6 py-2.5 rounded-md border-2 border-white inline-flex justify-center items-center gap-2 hover:bg-white/10 transition-colors">
-                        <div class="justify-start text-white text-lg font-medium leading-7">View all</div>
-                    </a>
-                </div>
+            @endforeach
+        </div>
+        <div class="flex justify-center pt-2">
+            <a href="{{ route('skills') }}"
+               class="inline-flex items-center gap-2 rounded-md border border-border bg-background px-5 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                <span>{{ $ui['actions']['view_skills'] }}</span>
+                <x-icon name="arrow-right" class="w-4 h-4" />
+            </a>
+        </div>
+    </x-section-card>
+
+    {{-- Section 6: Featured Projects (3-column grid from real GitHub repos) --}}
+    <x-section-card :title="$ui['sections']['featured_projects']" class="mt-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5">
+            @foreach($featuredProjects as $project)
+                <x-project-card :project="$project" :compact="true" />
+            @endforeach
+        </div>
+        <div class="flex justify-center pt-3">
+            <a href="{{ route('projects') }}"
+               class="inline-flex items-center gap-2 rounded-md border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                <span>{{ $ui['actions']['view_all_projects'] }}</span>
+                <x-icon name="arrow-right" class="w-4 h-4" />
+            </a>
+        </div>
+    </x-section-card>
+
+    {{-- Section 7: Latest Blog (2-column grid matching reference) --}}
+    <x-section-card :title="$ui['sections']['latest_blog']" class="mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            @foreach($latestPosts as $post)
+                <x-blog-card :post="$post" :readMoreLabel="$ui['actions']['read_more']" />
+            @endforeach
+        </div>
+        <div class="flex justify-center pt-3">
+            <a href="{{ route('blog') }}"
+               class="inline-flex items-center gap-2 rounded-md border border-border bg-background px-5 py-2.5 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors">
+                <span>{{ $ui['actions']['view_all_articles'] }}</span>
+                <x-icon name="arrow-right" class="w-4 h-4" />
+            </a>
+        </div>
+    </x-section-card>
+
+    {{-- Section 8: Contact CTA Card --}}
+    <x-section-card :title="$ui['sections']['contact_cta_title']" class="mt-12">
+        <div class="text-center py-2">
+            <p class="text-base sm:text-lg text-muted-foreground mb-6 max-w-2xl mx-auto leading-relaxed">
+                {{ $ui['sections']['contact_cta_desc'] }}
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="{{ route('contact') }}"
+                   class="inline-flex h-11 items-center justify-center gap-2 rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground hover:bg-primary-hover transition-colors w-full sm:w-auto">
+                    <span>{{ $ui['actions']['contact_me'] }}</span>
+                    <x-icon name="arrow-right" class="w-4 h-4" />
+                </a>
+                <a href="{{ $profile['github'] }}" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-border bg-background px-6 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors w-full sm:w-auto">
+                    <x-icon name="github" class="w-4 h-4" />
+                    <span>GitHub @pramacoder</span>
+                </a>
             </div>
         </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div class="self-stretch min-h-[600px] lg:h-[1232px] px-4 sm:px-8 lg:px-16 py-12 lg:py-28 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20 overflow-hidden">
-        <div class="w-full max-w-[1280px] flex flex-col justify-start items-start gap-12 lg:gap-20">
-            <div class="self-stretch inline-flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-20">
-                <!-- Left Content -->
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-4">
-                    <div class="inline-flex justify-start items-center">
-                        <div class="justify-start text-white text-base font-semibold leading-6">Contact</div>
-                    </div>
-                    <div class="self-stretch flex flex-col justify-start items-start gap-6">
-                        <div class="self-stretch justify-start text-[#7FFFD4] text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight lg:leading-[72px]">Get in touch</div>
-                        <div class="self-stretch justify-start text-white text-lg lg:text-xl font-normal leading-7 lg:leading-8">
-                            Have a project in mind or just want to say hello? We'd like to hear from you.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Content - Contact Info -->
-                <div class="w-full lg:w-[500px] py-2 inline-flex flex-col justify-start items-start gap-6">
-                    <!-- Email -->
-                    <div class="self-stretch inline-flex justify-start items-start gap-4">
-                        <div class="w-6 h-6 relative overflow-hidden">
-                            <div class="w-5 h-4 left-[1.85px] top-[3.84px] absolute bg-white border border-white"></div>
-                        </div>
-                        <div class="flex-1 inline-flex flex-col justify-start items-start gap-2">
-                            <div class="self-stretch justify-start text-white text-xl lg:text-2xl font-bold leading-7 lg:leading-9">Email</div>
-                            <a href="mailto:hello@portfoliodesign.com" class="self-stretch justify-start text-white text-base lg:text-lg font-normal underline leading-6 lg:leading-7 hover:text-[#7FFFD4] transition-colors">
-                                hello@portfoliodesign.com
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Phone -->
-                    <div class="self-stretch inline-flex justify-start items-start gap-4">
-                        <div class="w-6 h-6 relative overflow-hidden">
-                            <div class="w-5 h-5 left-[2.85px] top-[2.84px] absolute bg-white border border-white"></div>
-                        </div>
-                        <div class="flex-1 inline-flex flex-col justify-start items-start gap-2">
-                            <div class="self-stretch justify-start text-white text-xl lg:text-2xl font-bold leading-7 lg:leading-9">Phone</div>
-                            <a href="tel:+15551234567" class="self-stretch justify-start text-white text-base lg:text-lg font-normal underline leading-6 lg:leading-7 hover:text-[#7FFFD4] transition-colors">
-                                +1 (555) 123-4567
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Office -->
-                    <div class="self-stretch inline-flex justify-start items-start gap-4">
-                        <div class="w-6 h-6 relative overflow-hidden">
-                            <div class="w-4 h-5 left-[3.85px] top-[1.84px] absolute bg-white border border-white"></div>
-                        </div>
-                        <div class="flex-1 inline-flex flex-col justify-start items-start gap-2">
-                            <div class="self-stretch justify-start text-white text-xl lg:text-2xl font-bold leading-7 lg:leading-9">Office</div>
-                            <div class="self-stretch justify-start text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">
-                                456 Design Street, Sydney NSW 2000 AU
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Map Image -->
-            <img class="w-full h-auto lg:h-[720px] rounded-lg object-cover" 
-                 src="{{ asset('images/portfolio/hero/map.jpg') }}" 
-                 alt="Office Location"
-                 onerror="this.src='https://placehold.co/1280x720/1A1A1A/7FFFD4?text=Office+Location';">
-        </div>
-    </div>
-
-    <!-- Newsletter Section -->
-    <div class="self-stretch px-4 sm:px-8 lg:px-16 py-12 lg:py-20 bg-black flex flex-col justify-start items-center gap-12 lg:gap-20">
-        <div class="w-full max-w-[1280px] flex flex-col justify-start items-start gap-12 lg:gap-20">
-            <div class="self-stretch inline-flex flex-col lg:flex-row justify-between items-start gap-8">
-                <!-- Left Content -->
-                <div class="flex-1 max-w-[560px] inline-flex flex-col justify-start items-start">
-                    <div class="self-stretch justify-start text-white text-lg lg:text-xl font-semibold leading-7 lg:leading-8">Stay in the loop</div>
-                    <div class="self-stretch justify-start text-white text-base lg:text-lg font-normal leading-6 lg:leading-7">
-                        Get updates on new work and design insights
-                    </div>
-                </div>
-                
-                <!-- Right Content - Newsletter Form -->
-                <div class="w-full lg:w-96 inline-flex flex-col justify-start items-start gap-3">
-                    <form class="self-stretch inline-flex justify-start items-start gap-4">
-                        <input type="email" 
-                               placeholder="Your email here" 
-                               class="flex-1 px-3 py-2 bg-transparent rounded-md outline outline-2 outline-white text-white placeholder:text-white/60 text-lg font-normal leading-7 focus:outline-[#7FFFD4] transition-colors">
-                        <button type="submit" class="px-6 py-2.5 rounded-md border-2 border-white flex justify-center items-center gap-2 hover:bg-white/10 transition-colors">
-                            <div class="text-white text-lg font-medium leading-7">Subscribe</div>
-                        </button>
-                    </form>
-                    <div class="self-stretch inline-flex justify-start items-start gap-1">
-                        <div class="justify-start text-white/60 text-xs font-normal leading-4">
-                            We respect your privacy. Unsubscribe anytime.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Divider -->
-            <div class="self-stretch h-0 outline outline-2 outline-offset-[-1px] outline-white/20"></div>
-            
-            <!-- Footer Links -->
-            <div class="self-stretch inline-flex flex-col lg:flex-row justify-start items-start gap-8 lg:gap-10">
-                <!-- Explore -->
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
-                    <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Explore</div>
-                    <div class="self-stretch flex flex-col justify-start items-start">
-                        <a href="{{ route('projects') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Portfolio</div>
-                        </a>
-                        <a href="{{ route('projects') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Projects</div>
-                        </a>
-                        <a href="{{ route('about') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">About</div>
-                        </a>
-                        <a href="{{ route('contact') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Contact</div>
-                        </a>
-                        <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">Services</div>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Resources -->
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
-                    <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Resources</div>
-                    <div class="self-stretch flex flex-col justify-start items-start">
-                        @foreach(['Blog', 'Insights', 'Guides', 'Tools', 'Gallery'] as $item)
-                        <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                
-                <!-- Company -->
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
-                    <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Company</div>
-                    <div class="self-stretch flex flex-col justify-start items-start">
-                        @foreach(['Our story', 'Team', 'Careers', 'Press', 'Partners'] as $item)
-                        <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                
-                <!-- Connect -->
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
-                    <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Connect</div>
-                    <div class="self-stretch flex flex-col justify-start items-start">
-                        @foreach(['Get in touch', 'Email us', 'Call now', 'Visit us', 'Schedule call'] as $item)
-                        <a href="{{ route('contact') }}" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                
-                <!-- Legal -->
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
-                    <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Legal</div>
-                    <div class="self-stretch flex flex-col justify-start items-start">
-                        @foreach(['Privacy policy', 'Terms of service', 'Cookie policy', 'Disclaimer', 'Accessibility'] as $item)
-                        <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-                
-                <!-- Follow -->
-                <div class="flex-1 inline-flex flex-col justify-start items-start gap-4 overflow-hidden">
-                    <div class="self-stretch justify-start text-white text-base lg:text-lg font-semibold leading-6 lg:leading-7">Follow</div>
-                    <div class="self-stretch flex flex-col justify-start items-start">
-                        @foreach(['LinkedIn profile', 'Instagram account', 'Twitter updates', 'Facebook page', 'Dribbble'] as $item)
-                        <a href="#" class="self-stretch py-2 inline-flex justify-start items-start hover:text-[#7FFFD4] transition-colors">
-                            <div class="flex-1 justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">{{ $item }}</div>
-                        </a>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Footer Bottom -->
-            <div class="self-stretch flex flex-col justify-start items-start gap-8">
-                <div class="self-stretch h-0 outline outline-2 outline-offset-[-1px] outline-white/20"></div>
-                <div class="self-stretch inline-flex flex-col lg:flex-row justify-between items-center gap-4">
-                    <!-- Logo -->
-                    <a href="{{ route('home') }}" class="w-20 h-9 relative overflow-hidden">
-                        <div class="w-16 h-9 left-[6.67px] top-0 absolute overflow-hidden">
-                            <div class="w-5 h-4 left-[50.82px] top-[10.87px] absolute bg-white"></div>
-                            <div class="w-5 h-6 left-[34.33px] top-[11.32px] absolute bg-white"></div>
-                            <div class="w-5 h-4 left-[18.55px] top-[10.87px] absolute bg-white"></div>
-                            <div class="w-5 h-4 left-0 top-[10.24px] absolute bg-white"></div>
-                            <div class="w-4 h-2.5 left-[1.15px] top-0 absolute bg-white"></div>
-                        </div>
-                    </a>
-                    
-                    <!-- Copyright -->
-                    <div class="flex justify-start items-center gap-6">
-                        <div class="justify-start text-white text-sm lg:text-base font-normal leading-5 lg:leading-6">
-                            © {{ date('Y') }} Portfolio Web Design. All rights reserved.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </x-section-card>
 @endsection

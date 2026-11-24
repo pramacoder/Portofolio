@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#F2F6F2"/>
+  <g opacity="0.18">
+    <path d="M0 75H800M0 150H800M0 225H800M0 300H800M0 375H800" stroke="#3D6B55" stroke-width="1"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450" stroke="#3D6B55" stroke-width="1"/>
+  </g>
+  <rect x="430" y="56" width="152" height="102" rx="12" fill="#FFFFFF" stroke="#D5DFD2"/>
+      <rect x="598" y="56" width="152" height="102" rx="12" fill="#FFFFFF" stroke="#D5DFD2"/>
+      <rect x="430" y="174" width="320" height="96" rx="12" fill="#527A61"/>
+      <rect x="448" y="74" width="116" height="44" rx="6" fill="#DDE8DA"/>
+      <rect x="616" y="74" width="116" height="44" rx="6" fill="#E6EFE4"/>
+      <rect x="454" y="198" width="140" height="14" rx="7" fill="#FFFFFF" fill-opacity="0.9"/>
+      <rect x="454" y="224" width="210" height="10" rx="5" fill="#FFFFFF" fill-opacity="0.45"/>
+      <rect x="646" y="206" width="80" height="32" rx="8" fill="#FFFFFF"/>
+  <rect x="44" y="42" width="271" height="30" rx="15" fill="#3D6B55" fill-opacity="0.14" stroke="#3D6B55" stroke-opacity="0.35"/>
+  <text x="60" y="61" fill="#3D6B55" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600">REACT · SUPABASE · MIDTRANS</text>
+  <text x="44" y="346" fill="#202820" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5">GreenView Apartment</text>
+  <text x="44" y="382" fill="#5B665C" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400">Unit Catalog, Tenant Portal &amp; Snap Payment</text>
+</svg>

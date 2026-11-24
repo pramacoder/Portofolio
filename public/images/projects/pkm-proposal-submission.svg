@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <rect width="800" height="450" fill="#F5F6F1"/>
+  <g opacity="0.18">
+    <path d="M0 75H800M0 150H800M0 225H800M0 300H800M0 375H800" stroke="#42644F" stroke-width="1"/>
+    <path d="M100 0V450M200 0V450M300 0V450M400 0V450M500 0V450M600 0V450M700 0V450" stroke="#42644F" stroke-width="1"/>
+  </g>
+  <rect x="435" y="64" width="136" height="72" rx="10" fill="#FFFFFF" stroke="#527A61" stroke-width="1.5"/>
+      <rect x="615" y="64" width="136" height="72" rx="10" fill="#DDE8DA" stroke="#527A61" stroke-width="1.5"/>
+      <rect x="435" y="176" width="136" height="72" rx="10" fill="#DDE8DA" stroke="#527A61" stroke-width="1.5"/>
+      <rect x="615" y="176" width="136" height="72" rx="10" fill="#527A61"/>
+      <path d="M571 100H615M503 136V176M683 136V176M571 212H615" stroke="#527A61" stroke-width="2" stroke-dasharray="5 4"/>
+      <circle cx="465" cy="92" r="10" fill="#527A61" fill-opacity="0.25"/>
+      <circle cx="645" cy="92" r="10" fill="#527A61"/>
+      <circle cx="465" cy="204" r="10" fill="#527A61"/>
+      <circle cx="645" cy="204" r="10" fill="#FFFFFF" fill-opacity="0.85"/>
+  <rect x="44" y="42" width="181" height="30" rx="15" fill="#42644F" fill-opacity="0.14" stroke="#42644F" stroke-opacity="0.35"/>
+  <text x="60" y="61" fill="#42644F" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="600">LARAVEL · PHP 8.3</text>
+  <text x="44" y="346" fill="#202820" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5">PKM Proposal System</text>
+  <text x="44" y="382" fill="#5B665C" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400">Universitas Udayana · 10 Schemes · 4 Roles</text>
+</svg>
